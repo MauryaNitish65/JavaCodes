@@ -1,27 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-//Largest Element In Attay
+//Remove duplicate From Sorted Array
 package java_practice;
 import java.util.*;
 /**
  *
  * @author Nitish Kumar Maurya
  */
-public class Array006_Largest_element_in_array {
-    public static int largest_element(int []arr,int n)
+public class Array010_Remove_duplicate_from_sorted_array {
+    public static int duplicate_remove(int []arr,int n)
     {
-        if(n==0 || arr.length==0)
-            return -1;            
-        int max=0;
+        int k=1;
         for(int i=1;i<n;i++)
         {
-            if(arr[i]>arr[max])
-                max=i;
+            if(arr[i]!=arr[k-1])
+            {
+                arr[k]=arr[i];
+                k++;
+            }
         }
-        return max;
+        return k;
     }
     public static void print(int []arr,int n)
     {
@@ -43,10 +39,7 @@ public class Array006_Largest_element_in_array {
             arr[i]=sc.nextInt();
         }
         print(arr,n);
-        int pos=largest_element(arr,n);
-        if(pos==-1)
-            System.out.println("No largest element");
-        else
-            System.out.println("The largest element is "+arr[pos]+" and at position "+(pos+1));
+        n=duplicate_remove(arr,n);
+        print(arr,n);
     }
 }
